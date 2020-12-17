@@ -8,7 +8,6 @@ public:
 	~Player();
 	void setCredits(int credits);
 	int getCredits() const;
-	void openHand();
 	void addNewHand();
 	void deleteNewHand();
 	int getSum();
