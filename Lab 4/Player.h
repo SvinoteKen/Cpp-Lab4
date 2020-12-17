@@ -19,7 +19,6 @@ protected:
 	std::vector<Card>hand;
 private:
 	std::vector<Card> splitHand;
-	bool new_hand_;
 	int credits_;
 };
 
