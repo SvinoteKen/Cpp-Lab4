@@ -16,9 +16,6 @@ int Player::getCredits() const {
 void Player::setCredits(int credits) {
 	credits_ = credits;
 }
-void Player::addNewHand() {
-	splitHand.reserve(5);
-}
 void Player::deleteNewHand() {
 	splitHand.clear();
 }
