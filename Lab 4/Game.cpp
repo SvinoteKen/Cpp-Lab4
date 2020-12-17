@@ -66,7 +66,7 @@ void Game::printPlayersHand(bool dealer,bool theEnd) {
 				std::wcout.width(5);
 				std::wcout << players[0]->hand[i];
 			}
-			std::wcout << L"\nÄîïîëíèòåëüíàÿ ðóêà: ";
+			std::wcout << L"\nÃ„Ã®Ã¯Ã®Ã«Ã­Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã Ã¿ Ã°Ã³ÃªÃ : ";
 			for (int i = 0; i < players[0]->splitHand.size(); i++)
 			{
 				std::wcout.width(5);
@@ -82,23 +82,23 @@ void Game::printDecks() {
 	std::wcout << "\n";
 }
 void Game::printInfo() {
-	std::cout << "Êîëîäû:";
+	std::cout << "ÃŠÃ®Ã«Ã®Ã¤Ã»:";
 	printDecks();
-	std::cout << "\nÄèëåð:";
+	std::cout << "\nÃ„Ã¨Ã«Ã¥Ã°:";
 	printPlayersHand(true,end);
-	std::wcout << L"\nÂû:";
+	std::wcout << L"\nÃ‚Ã»:";
 	printPlayersHand(false,end);
 }
 void Game::getAmount() {
 	int money = 0;
-	std::cout << "Âàøà ñòàâêà?\n";
+	std::cout << "Ã‚Ã Ã¸Ã  Ã±Ã²Ã Ã¢ÃªÃ ?\n";
 	std::cin >> money;
 	if (money > 0 && money <= players[0]->getCredits()) {
 		amount_ = money;
 	}
 	else
 	{
-		std::wcout << L"Îøèáêà ñòàâêè\n";
+		std::wcout << L"ÃŽÃ¸Ã¨Ã¡ÃªÃ  Ã±Ã²Ã Ã¢ÃªÃ¨\n";
 		getAmount();
 	}
 }
@@ -114,9 +114,9 @@ void Game::prompt()
 {
 	if (isSplit_) {
         std::cout << std::endl;
-		std::cout << "Äëÿ ïåðâîé ðóêè" << std::endl;
-		std::cout << "1. Õâàòèò" << std::endl;
-		std::cout << "2. Åùå" << std::endl;
+		std::cout << "Ã„Ã«Ã¿ Ã¯Ã¥Ã°Ã¢Ã®Ã© Ã°Ã³ÃªÃ¨" << std::endl;
+		std::cout << "1. Ã•Ã¢Ã Ã²Ã¨Ã²" << std::endl;
+		std::cout << "2. Ã…Ã¹Ã¥" << std::endl;
 		int action;
 		std::cin >> action;
 		switch (action) {
@@ -127,9 +127,9 @@ void Game::prompt()
 			break;
 		}
 		std::cout << std::endl;
-		std::cout << "Äëÿ âòîðîé ðóêè" << std::endl;
-		std::cout << "1. Õâàòèò" << std::endl;
-		std::cout << "2. Åùå" << std::endl;
+		std::cout << "Ã„Ã«Ã¿ Ã¢Ã²Ã®Ã°Ã®Ã© Ã°Ã³ÃªÃ¨" << std::endl;
+		std::cout << "1. Ã•Ã¢Ã Ã²Ã¨Ã²" << std::endl;
+		std::cout << "2. Ã…Ã¹Ã¥" << std::endl;
 		std::cin >> action;
 		switch (action) {
 		case 1:
@@ -140,9 +140,9 @@ void Game::prompt()
 			break;
 		}
 		std::cout << std::endl;
-		std::cout << "Çàêîí÷èòü èãðó?" << std::endl;
-		std::cout << "1. Äà" << std::endl;
-		std::cout << "2. Íåò" << std::endl;
+		std::cout << "Ã‡Ã ÃªÃ®Ã­Ã·Ã¨Ã²Ã¼ Ã¨Ã£Ã°Ã³?" << std::endl;
+		std::cout << "1. Ã„Ã " << std::endl;
+		std::cout << "2. ÃÃ¥Ã²" << std::endl;
 		std::cin >> action;
 		switch (action) {
 		case 1:
@@ -155,9 +155,9 @@ void Game::prompt()
 	}
 	else {
 		std::cout << std::endl;
-		std::cout << "1. Õâàòèò" << std::endl;
-		std::cout << "2. Åùå" << std::endl;
-		std::cout << "3. Ñïëèò" << std::endl;
+		std::cout << "1. Ã•Ã¢Ã Ã²Ã¨Ã²" << std::endl;
+		std::cout << "2. Ã…Ã¹Ã¥" << std::endl;
+		std::cout << "3. Ã‘Ã¯Ã«Ã¨Ã²" << std::endl;
 		int action;
 		std::cin >> action;
 		switch (action) {
@@ -172,7 +172,6 @@ void Game::prompt()
 			break;
 		case 3:
 			if (players[0]->hand[0].getContent() != players[0]->hand[1].getContent()) {
-				players[0]->addNewHand();
 				isSplit_ = true;
 				amount_ *= 2;
 				Card card = players[0]->hand.front();
@@ -180,25 +179,25 @@ void Game::prompt()
                 players[0]->sum_ -= card.getValue();
 				players[0]->splitSum += card.getValue();
 				players[0]->hand.erase(players[0]->hand.begin());
-				std::cout << "Còàâêà áûëà óäâîåíà, òåïåðü âàøà ñòàâêà " << amount_ << std::endl;
+				std::cout << "CÃ²Ã Ã¢ÃªÃ  Ã¡Ã»Ã«Ã  Ã³Ã¤Ã¢Ã®Ã¥Ã­Ã , Ã²Ã¥Ã¯Ã¥Ã°Ã¼ Ã¢Ã Ã¸Ã  Ã±Ã²Ã Ã¢ÃªÃ  " << amount_ << std::endl;
 				addCardToPlayer();
 				addCardToSplit();
 			}
 			else {
-				std::cout << "Óñëîâèÿ äëÿ ñïëèòà íå âûïîëíåííî" << std::endl;
+				std::cout << "Ã“Ã±Ã«Ã®Ã¢Ã¨Ã¿ Ã¤Ã«Ã¿ Ã±Ã¯Ã«Ã¨Ã²Ã  Ã­Ã¥ Ã¢Ã»Ã¯Ã®Ã«Ã­Ã¥Ã­Ã­Ã®" << std::endl;
 			}
 			printInfo();
 			prompt();
 			break;
 		default:
-			std::cout << "Íåâåðíîå äåéñòâèå" << std::endl;
+			std::cout << "ÃÃ¥Ã¢Ã¥Ã°Ã­Ã®Ã¥ Ã¤Ã¥Ã©Ã±Ã²Ã¢Ã¨Ã¥" << std::endl;
 			prompt();
 			break;
 		}
 	}
 }
 bool Game::nextGame() {
-	std::wcout << L"\n1.Ïðîäîëæèòü\n2.Âûõîä\n";
+	std::wcout << L"\n1.ÃÃ°Ã®Ã¤Ã®Ã«Ã¦Ã¨Ã²Ã¼\n2.Ã‚Ã»ÃµÃ®Ã¤\n";
 	wchar_t answer;
 	std::wcin >> answer;
 	switch (answer)
@@ -219,81 +218,92 @@ bool Game::nextGame() {
 }
 void Game::endGame() {
     end = true;
-	std::cout << "Èãðà îêîí÷åíà." << std::endl;
+	std::cout << "ÃˆÃ£Ã°Ã  Ã®ÃªÃ®Ã­Ã·Ã¥Ã­Ã ." << std::endl;
 	while (players[1]->sum_ <= 17) { addCardToDealer(); }
 	printInfo();
 	if (isSplit_) {
 		std::cout <<std::endl;
-		std::cout << "Ó äèëåðà " << players[1]->sum_ << "." << std::endl;
-		std::cout << "Ó âàñ â ïåðâîé ðóêå" << players[0]->sum_ << "," << "âî âòîðîé ðóêå:" << players[0]->splitSum << std::endl;
+		std::cout << "Ã“ Ã¤Ã¨Ã«Ã¥Ã°Ã  " << players[1]->sum_ << "." << std::endl;
+		std::cout << "Ã“ Ã¢Ã Ã± Ã¢ Ã¯Ã¥Ã°Ã¢Ã®Ã© Ã°Ã³ÃªÃ¥" << players[0]->sum_ << "," << "Ã¢Ã® Ã¢Ã²Ã®Ã°Ã®Ã© Ã°Ã³ÃªÃ¥:" << players[0]->splitSum << std::endl;
 	}
 	else {
 		std::cout << std::endl;
-		std::cout << "Ó äèëåðà " << players[1]->sum_ << "." << std::endl;
-		std::cout << "Ó âàñ â ðóêå" << players[0]->sum_ << std::endl;
+		std::cout << "Ã“ Ã¤Ã¨Ã«Ã¥Ã°Ã  " << players[1]->sum_ << "." << std::endl;
+		std::cout << "Ã“ Ã¢Ã Ã± Ã¢ Ã°Ã³ÃªÃ¥" << players[0]->sum_ << std::endl;
+	}
+	try {
+		if (players[0]->sum_ > 21 || players[0]->splitSum > 21) { throw OutOfScoreException(); }
+	}
+	catch (OutOfScoreException) {
+		std::cout << std::endl;
+		std::cout << "Ð’Ñ‹ Ð¿Ñ€Ð¾Ð¸Ð³Ñ€Ð°Ð»Ð¸ Ñƒ Ð²Ð°Ñ Ð¿ÐµÑ€ÐµÐ±Ð¾Ñ€" << std::endl;
+		money -= amount_;
+		players[0]->setCredits(money);
+		std::cout << "Ð£ Ð²Ð°Ñ " << players[0]->getCredits() << std::endl;
+		nextGame();
 	}
 	bool userLost = false;
 	bool draw = false;
 	if (!isSplit_) {
 		if (players[0]->sum_ == 21) {
-			std::cout << "Ó âàñ 21 î÷êî. Âû ïîáåäèëè." << std::endl;
-            std::cout << "Âû ïîëó÷èëè " << amount_ << "." << std::endl;
+			std::cout << "Ã“ Ã¢Ã Ã± 21 Ã®Ã·ÃªÃ®. Ã‚Ã» Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã«Ã¨." << std::endl;
+            std::cout << "Ã‚Ã» Ã¯Ã®Ã«Ã³Ã·Ã¨Ã«Ã¨ " << amount_ << "." << std::endl;
 		}
 		else if (players[1]->sum_ == 21) {
-			std::cout << "Ó äèëåðà 21. Âû ïðîèãðàëè. Âû ïîòåðÿëè " << amount_ << "." << std::endl;
+			std::cout << "Ã“ Ã¤Ã¨Ã«Ã¥Ã°Ã  21. Ã‚Ã» Ã¯Ã°Ã®Ã¨Ã£Ã°Ã Ã«Ã¨. Ã‚Ã» Ã¯Ã®Ã²Ã¥Ã°Ã¿Ã«Ã¨ " << amount_ << "." << std::endl;
 			userLost = true;
 		}
 		else {
-			std::cout << "Íè ó êîãî íå âûïàëî 21, íî ";
+			std::cout << "ÃÃ¨ Ã³ ÃªÃ®Ã£Ã® Ã­Ã¥ Ã¢Ã»Ã¯Ã Ã«Ã® 21, Ã­Ã® ";
 			if (players[0]->sum_<21 && players[0]->sum_>players[1]->sum_) {
-				std::cout << "âû áëèæå ê 21, è ïîýòîìó âûèãðàëè. Âàø âûèãðûø " << amount_ << "." << std::endl;
+				std::cout << "Ã¢Ã» Ã¡Ã«Ã¨Ã¦Ã¥ Ãª 21, Ã¨ Ã¯Ã®Ã½Ã²Ã®Ã¬Ã³ Ã¢Ã»Ã¨Ã£Ã°Ã Ã«Ã¨. Ã‚Ã Ã¸ Ã¢Ã»Ã¨Ã£Ã°Ã»Ã¸ " << amount_ << "." << std::endl;
 
 			}
 			else {
-				std::cout << "äèëåð áëèæå ê 21, è ïîýòîìó âû ïðîèãðàëè. Âû ïîòåðÿëè " << amount_ << "." << std::endl;
+				std::cout << "Ã¤Ã¨Ã«Ã¥Ã° Ã¡Ã«Ã¨Ã¦Ã¥ Ãª 21, Ã¨ Ã¯Ã®Ã½Ã²Ã®Ã¬Ã³ Ã¢Ã» Ã¯Ã°Ã®Ã¨Ã£Ã°Ã Ã«Ã¨. Ã‚Ã» Ã¯Ã®Ã²Ã¥Ã°Ã¿Ã«Ã¨ " << amount_ << "." << std::endl;
 				userLost = true;
 			}
 		}
 	}
 	else {
 		if (players[0]->sum_ == 21 && players[0]->splitSum == 21 && players[1]->sum_ == 21) {
-			std::cout << "Ó âñåõ ïî 21 î÷êó. Íè÷üÿ." << std::endl;
+			std::cout << "Ã“ Ã¢Ã±Ã¥Ãµ Ã¯Ã® 21 Ã®Ã·ÃªÃ³. ÃÃ¨Ã·Ã¼Ã¿." << std::endl;
 			draw = true;
 		}
 		else if (players[0]->sum_ == 21 && players[0]->splitSum == 21) {
-			std::cout << "Ó âàñ â îáåèõ ðóêàõ ïî 21 î÷êó. Âû ïîáåäèëè." << std::endl;
+			std::cout << "Ã“ Ã¢Ã Ã± Ã¢ Ã®Ã¡Ã¥Ã¨Ãµ Ã°Ã³ÃªÃ Ãµ Ã¯Ã® 21 Ã®Ã·ÃªÃ³. Ã‚Ã» Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã«Ã¨." << std::endl;
 			amount_ *= 2;
-			std::cout << "Âû ïîëó÷èëè óäâîåíûé âûèãðûø" << amount_ << "." << std::endl;
+			std::cout << "Ã‚Ã» Ã¯Ã®Ã«Ã³Ã·Ã¨Ã«Ã¨ Ã³Ã¤Ã¢Ã®Ã¥Ã­Ã»Ã© Ã¢Ã»Ã¨Ã£Ã°Ã»Ã¸" << amount_ << "." << std::endl;
 		}
 		if (players[0]->sum_ == 21) {
 			amount_ /= 2;
-			std::cout << "Ó âàñ â ïåðâîé ðóêå 21 î÷êî. Âû ïîáåäèëè." << std::endl;
-			std::cout << "Âû ïîëó÷èëè ïåðâîíà÷àëüíóþ ñòàâêó" << amount_ << "." << std::endl;
+			std::cout << "Ã“ Ã¢Ã Ã± Ã¢ Ã¯Ã¥Ã°Ã¢Ã®Ã© Ã°Ã³ÃªÃ¥ 21 Ã®Ã·ÃªÃ®. Ã‚Ã» Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã«Ã¨." << std::endl;
+			std::cout << "Ã‚Ã» Ã¯Ã®Ã«Ã³Ã·Ã¨Ã«Ã¨ Ã¯Ã¥Ã°Ã¢Ã®Ã­Ã Ã·Ã Ã«Ã¼Ã­Ã³Ã¾ Ã±Ã²Ã Ã¢ÃªÃ³" << amount_ << "." << std::endl;
 		}
 		else if (players[0]->splitSum == 21) {
 			amount_ /= 2;
-			std::cout << "Ó âàñ âî âòîðîé ðóêå 21 î÷êî. Âû ïîáåäèëè." << std::endl;
-			std::cout << "Âû ïîëó÷èëè ïåðâîíà÷àëüíóþ ñòàâêó " << amount_ << "." << std::endl;
+			std::cout << "Ã“ Ã¢Ã Ã± Ã¢Ã® Ã¢Ã²Ã®Ã°Ã®Ã© Ã°Ã³ÃªÃ¥ 21 Ã®Ã·ÃªÃ®. Ã‚Ã» Ã¯Ã®Ã¡Ã¥Ã¤Ã¨Ã«Ã¨." << std::endl;
+			std::cout << "Ã‚Ã» Ã¯Ã®Ã«Ã³Ã·Ã¨Ã«Ã¨ Ã¯Ã¥Ã°Ã¢Ã®Ã­Ã Ã·Ã Ã«Ã¼Ã­Ã³Ã¾ Ã±Ã²Ã Ã¢ÃªÃ³ " << amount_ << "." << std::endl;
 		}
 		else if (players[1]->sum_ == 21) {
-			std::cout << "Ó äèëåðà 21. Âû ïðîèãðàëè. Âû ïîòåðÿëè " << amount_ << "." << std::endl;
+			std::cout << "Ã“ Ã¤Ã¨Ã«Ã¥Ã°Ã  21. Ã‚Ã» Ã¯Ã°Ã®Ã¨Ã£Ã°Ã Ã«Ã¨. Ã‚Ã» Ã¯Ã®Ã²Ã¥Ã°Ã¿Ã«Ã¨ " << amount_ << "." << std::endl;
 			userLost = true;
 		}
 		else {
-			std::cout << "Íè ó êîãî íå âûïàëî 21, íî ";
+			std::cout << "ÃÃ¨ Ã³ ÃªÃ®Ã£Ã® Ã­Ã¥ Ã¢Ã»Ã¯Ã Ã«Ã® 21, Ã­Ã® ";
 			if (players[0]->sum_<21 && players[0]->splitSum<21 && players[0]->sum_>players[1]->sum_&& players[0]->splitSum>players[1]->sum_) {
-				std::cout << "â äâóõ ðóêàõ çíà÷åíèå ê 21, è ïîýòîìó âûèãðàëè. Âàø âûèãðûø " << amount_ << "." << std::endl;
+				std::cout << "Ã¢ Ã¤Ã¢Ã³Ãµ Ã°Ã³ÃªÃ Ãµ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ Ãª 21, Ã¨ Ã¯Ã®Ã½Ã²Ã®Ã¬Ã³ Ã¢Ã»Ã¨Ã£Ã°Ã Ã«Ã¨. Ã‚Ã Ã¸ Ã¢Ã»Ã¨Ã£Ã°Ã»Ã¸ " << amount_ << "." << std::endl;
 			}
 			else if (players[0]->sum_<21 && players[0]->splitSum<21 && players[0]->sum_>players[1]->sum_ && players[0]->splitSum<players[1]->sum_) {
 				amount_ /= 2;
-				std::cout << "ïåðâàÿ ðóêà áëèæå ê 21,íî âòîðàÿ äàëüøå ÷åì îò äèëåðà è ïîýòîìó âû âûèãðàëè ïåðâíà÷àëüíóþ ñòàâêó. Âàø âûèãðûø " << amount_ << "." << std::endl;
+				std::cout << "Ã¯Ã¥Ã°Ã¢Ã Ã¿ Ã°Ã³ÃªÃ  Ã¡Ã«Ã¨Ã¦Ã¥ Ãª 21,Ã­Ã® Ã¢Ã²Ã®Ã°Ã Ã¿ Ã¤Ã Ã«Ã¼Ã¸Ã¥ Ã·Ã¥Ã¬ Ã®Ã² Ã¤Ã¨Ã«Ã¥Ã°Ã  Ã¨ Ã¯Ã®Ã½Ã²Ã®Ã¬Ã³ Ã¢Ã» Ã¢Ã»Ã¨Ã£Ã°Ã Ã«Ã¨ Ã¯Ã¥Ã°Ã¢Ã­Ã Ã·Ã Ã«Ã¼Ã­Ã³Ã¾ Ã±Ã²Ã Ã¢ÃªÃ³. Ã‚Ã Ã¸ Ã¢Ã»Ã¨Ã£Ã°Ã»Ã¸ " << amount_ << "." << std::endl;
 			}
 			else if (players[0]->sum_ < 21 && players[0]->splitSum<21 && players[0]->sum_<players[1]->sum_ && players[0]->splitSum > players[1]->sum_) {
 				amount_ /= 2;
-				std::cout << "âòîðàÿ ðóêà áëèæå ê 21,íî ïåðâàÿ äàëüøå ÷åì îò äèëåðà è ïîýòîìó âû âûèãðàëè ïåðâíà÷àëüíóþ ñòàâêó. Âàø âûèãðûø " << amount_ << "." << std::endl;
+				std::cout << "Ã¢Ã²Ã®Ã°Ã Ã¿ Ã°Ã³ÃªÃ  Ã¡Ã«Ã¨Ã¦Ã¥ Ãª 21,Ã­Ã® Ã¯Ã¥Ã°Ã¢Ã Ã¿ Ã¤Ã Ã«Ã¼Ã¸Ã¥ Ã·Ã¥Ã¬ Ã®Ã² Ã¤Ã¨Ã«Ã¥Ã°Ã  Ã¨ Ã¯Ã®Ã½Ã²Ã®Ã¬Ã³ Ã¢Ã» Ã¢Ã»Ã¨Ã£Ã°Ã Ã«Ã¨ Ã¯Ã¥Ã°Ã¢Ã­Ã Ã·Ã Ã«Ã¼Ã­Ã³Ã¾ Ã±Ã²Ã Ã¢ÃªÃ³. Ã‚Ã Ã¸ Ã¢Ã»Ã¨Ã£Ã°Ã»Ã¸ " << amount_ << "." << std::endl;
 			}
 			else {
-				std::cout << "äèëåð áëèæå ê 21, è ïîýòîìó âû ïðîèãðàëè. Âû ïîòåðÿëè " << amount_ << "." << std::endl;
+				std::cout << "Ã¤Ã¨Ã«Ã¥Ã° Ã¡Ã«Ã¨Ã¦Ã¥ Ãª 21, Ã¨ Ã¯Ã®Ã½Ã²Ã®Ã¬Ã³ Ã¢Ã» Ã¯Ã°Ã®Ã¨Ã£Ã°Ã Ã«Ã¨. Ã‚Ã» Ã¯Ã®Ã²Ã¥Ã°Ã¿Ã«Ã¨ " << amount_ << "." << std::endl;
 				userLost = true;
 			}
 		}
@@ -306,5 +316,5 @@ void Game::endGame() {
 		money += amount_;
 		players[0]->setCredits(money);
 	}
-	std::cout << "Ó âàñ " << players[0]->getCredits() << std::endl;
+	std::cout << "Ã“ Ã¢Ã Ã± " << players[0]->getCredits() << std::endl;
 }
